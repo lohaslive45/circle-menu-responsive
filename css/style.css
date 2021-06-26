@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+nav {
+  height: 10vh;
+  background: #395e5f;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  width: 50%;
+  height: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: auto;
+}
+
+.nav-links li a {
+  color: #f8f5e9;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+.landing {
+  position: relative;
+  height: 90vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-image: url(../pic/taiwan-landing-img.jpg);
+  background-size: cover;
+}
+
+.landing h1 {
+  position: absolute;
+  margin-top: 100px;
+  font-size: 100px;
+  color: whitesmoke;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+@media screen and (max-width: 758px) {
+  .line {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 5px;
+  }
+  nav {
+    position: relative;
+  }
+  nav .hamburger {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    -webkit-transform: translate(-5%, -50%);
+            transform: translate(-5%, -50%);
+    z-index: 2;
+  }
+  .nav-links {
+    position: fixed;
+    background: #395e5f;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-clip-path: circle(100px at 90% -10%);
+            clip-path: circle(100px at 90% -10%);
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    pointer-events: none;
+  }
+  .nav-links.open {
+    -webkit-clip-path: circle(850px at 90% -10%);
+            clip-path: circle(850px at 90% -10%);
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    pointer-events: all;
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .nav-links li:nth-child(1) {
+    -webkit-transition: all 0.5s ease 0.2s;
+    transition: all 0.5s ease 0.2s;
+  }
+  .nav-links li:nth-child(2) {
+    -webkit-transition: all 0.5s ease 0.4s;
+    transition: all 0.5s ease 0.4s;
+  }
+  .nav-links li:nth-child(3) {
+    -webkit-transition: all 0.5s ease 0.6s;
+    transition: all 0.5s ease 0.6s;
+  }
+  li.fade {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=style.css.map */

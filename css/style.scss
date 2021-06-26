@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  height: 10vh;
+  background: rgb(57, 94, 95);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto; //!---自動靠右貼齊
+  //background: yellowgreen; //*用顏色顯示範圍
+  li a {
+    color: rgb(248, 245, 233);
+    text-decoration: none;
+    font-size: 35px;
+  }
+}
+
+.landing {
+  position: relative;
+  height: 90vh;
+  display: grid; //todo---置中
+  place-items: center; //todo---置中
+  background-image: url(../pic/taiwan-landing-img.jpg);
+  background-size: cover;
+  h1 {
+    position: absolute;
+    margin-top: 100px;
+    font-size: 100px;
+    color: whitesmoke;
+    text-shadow: black 0.1em 0.1em 0.2em;
+  }
+}
+
+@media screen and (max-width: 758px) {
+  //todo---產生menu線條
+  .line {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 5px;
+  }
+
+  //todo---擺放menu位置
+  nav {
+    position: relative;
+    .hamburger {
+      position: absolute;
+      cursor: pointer;
+      right: 5%;
+      top: 50%;
+      transform: translate(-5%, -50%);
+      z-index: 2; //todo---保持在最上層，不被展開的菜單遮擋
+    }
+  }
+
+  //todo---menu展開整頁
+  //!---圓形-展開前，透過clip-path切到右上角隱藏
+  .nav-links {
+    position: fixed;
+    background: rgb(57, 94, 95);
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    flex-direction: column; //todo---垂直排列
+    //display: none;//todo---暫時隱藏，方便製作menu圖示
+    clip-path: circle(100px at 90% -10%);
+    transition: all 1s ease-out;
+    pointer-events: none; //!---避免被隱藏的選單被誤觸
+  }
+  //!---圓形-展開後，透過clip-path填滿螢幕
+  .nav-links.open {
+    clip-path: circle(850px at 90% -10%);
+    transition: all 1s ease-out;
+    pointer-events: all;
+  }
+
+  //*---逐一浮出-菜單選項，初始隱藏
+  .nav-links li {
+    opacity: 0;
+
+    &:nth-child(1) {
+      transition: all 0.5s ease 0.2s;
+    }
+    &:nth-child(2) {
+      transition: all 0.5s ease 0.4s;
+    }
+    &:nth-child(3) {
+      transition: all 0.5s ease 0.6s;
+    }
+  }
+  //*---逐一浮出-菜單選項，顯示
+  li.fade {
+    opacity: 1;
+  }
+}
